@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.jk.mapper.NewsMapper">
+
+
+             <!--查询总条数-->
+             <select id="findNewsCount" resultType="Integer">
+                  SELECT   COUNT(1) FROM  t_news n  LEFT JOIN  t_newstype ty ON n.typeId = ty.typeId
+             </select>
+
+             <select id="findNewsList" parameterType="Integer" resultType="com.jk.model.NewsBean">
+
+                 SELECT  *  FROM  t_news n  LEFT JOIN  t_newstype ty ON n.typeId = ty.typeId
+                 LIMIT #{page},#{rows}
+
+             </select>
+
+            <!--查询类型-->
+
+        <select id="queryType" resultType="com.jk.model.NewsType">
+
+            select  *  from  t_newstype
+        </select>
+
+          <insert id="addNews" parameterType="com.jk.model.NewsBean">
+              insert  into  t_news
+               (title,content,publishDate,author,typeId)
+              values
+              (#{title},#{content},#{publishDate},#{author},#{typeId})
+
+          </insert>
+
+
+       <!--单条-->
+      <select id="findBootDialogById" parameterType="Integer" resultType="com.jk.model.NewsBean">
+
+          select  *  from  t_news  where newId = #{id}
+      </select>
+
+      <update id="updateNews" parameterType="com.jk.model.NewsBean">
+          update  t_news set
+          title = #{title},content = #{content},
+          publishDate = #{publishDate},author = #{author},
+          typeId = #{typeId} where newId = #{newId}
+
+      </update>
+
+    <!--删除-->
+
+     <delete id="deleteNews" parameterType="Integer">
+         delete  from t_news where newId = #{id}
+     </delete>
+
+
+
+
+</mapper>
