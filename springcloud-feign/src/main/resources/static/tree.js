@@ -12,6 +12,10 @@ $(function (){
                             text:"新闻信息",
                             url:"toShow"
                         },
+                        {
+                            text:"新闻Es实时搜索信息",
+                            url:"toElastic"
+                        },
                     ]
                 },
             ]

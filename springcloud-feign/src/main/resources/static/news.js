@@ -79,6 +79,9 @@ $(function (){
         pageList: [5, 10, 15,20],        //可供选择的每页的行数（*）
     });
 
+
+    queryAboutUs();
+
 });
 
 function  search(){
@@ -188,4 +191,46 @@ function deleteNewsTable(nId){
             alert("删除失败");
         }
     })
+}
+
+
+function queryAboutUs(){
+    var form = $("#header_search").serialize();
+    $.ajax({
+        url:"http://localhost:8082/queryAllNews",
+        type:'get',
+        data:form,
+        success:function(data){
+            //alert(data[0].curriculumName);
+            commonality(data.news);
+
+            alert(data.loan[0].publishdate);
+            $("#sum").html(data.npm.pageSum);
+            $("#size").html(data.npm.pageSize);
+            $("#now").val(data.npm.pageNow);
+            $("#count").val(data.npm.pageCount);
+        },
+        error:function(){
+            alert("失败");
+        }
+    });
+}
+//条查公用拼接代码  封装成了一个方法
+function commonality(data){
+
+    var carUi = "";
+    for (var i = 0;i<data.length;i++){
+        carUi +='  <div class="commodity">\n' +
+            /*'        <img src="'+data[i].imgurl+'"/>\n' +*/
+            '        <span class="s1">'+data[i].title+'</span><br />\n' +
+
+            '        <span class="s2">'+data[i].content+'</span><br />\n' +
+
+            '        <span class="s3">'+data[i].publishdate+'</span><br />\n' +
+            '        <span class="s4">'+data[i].author+'</span><br />\n' +
+            '        <p class="s5">'+data[i].typeid+'</p><br />\n' +
+            '       <button type="button" class="btn btn-danger"  onclick="toInvestor('+data[i].id+')">查看详情</button>\n'+
+            '     </div>';
+    }
+    $("#aboutUsData").html(carUi);
 }

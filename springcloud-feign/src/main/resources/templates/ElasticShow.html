@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Es实时搜索页面</title>
+
+    <!-- 引入bootstrap的css -->
+    <link  href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+    <!-- 引入bootstrap-treeview的css -->
+    <link  href="js/treeview/bootstrap-treeview.min.css" rel="stylesheet" >
+    <!-- 引入bootstrap-addTabs的css -->
+    <link  href="js/addTabs/addTabs.css" rel="stylesheet" >
+    <!-- 引入bootstrap-table的css -->
+    <link  href="js/table/bootstrap-table.min.css" rel="stylesheet" >
+    <!-- 引入fileinput的css -->
+    <link type="text/css" rel="stylesheet" href="js/fileinput/css/fileinput.min.css" />
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- 引入my97 -->
+    <script type="text/javascript" src="js/my97/WdatePicker.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="js/treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="js/addTabs/addTabs.js"></script>
+    <!-- 引入bootstrap-table的js-->
+    <script type="text/javascript" src="js/table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="js/table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 引入bootbox.js -->
+    <script type="text/javascript" src="js/bootbox/bootbox.js"></script>
+    <!-- 引入fileinput的js -->
+    <script type="text/javascript" src="js/fileinput/js/fileinput.min.js"></script>
+    <!--  引入fileinput的js -->
+    <script type="text/javascript" src="js/fileinput/js/locales/zh.js"></script>
+
+
+    <script type="text/javascript" src="js/fileinput/themes/fa/theme.js"></script>
+    <style type="text/css">
+        body {padding-top:55px;}
+
+        body{
+            margin-top: 0;
+            text-align: center;
+        }
+        #main{
+            width: 1350px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .top_0{
+            background-color: #DDD;
+            height: 30px;
+            width: 98%;
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+        .top_0_0{
+            margin: 2px 30px;
+            float: left;
+        }
+        .top_0_1{
+            margin-top: 2px;
+            margin-right: 30px;
+            float: right;
+        }
+        .a1{
+            text-decoration: none;
+            font-size: 12px;
+            color: darkorange;
+        }
+        .a2{
+            text-decoration: none;
+            font-size: 12px;
+            color: black;
+        }
+        #top_1{
+            height: 115px;
+            width: 98%;
+            margin: 0 auto;
+        }
+        #selBox{
+            margin-top: 30px;
+            width: 500px;
+            height: 25px;
+            border-radius: 10px;
+        }
+        #submit{
+            font-size: 18px;
+            height: 30px;
+            width: 60px;
+            border-radius: 10px;
+            margin-left: 30px;
+        }
+        #middle_0{
+            border: 1px solid #DDD;
+            height: 30px;
+            width: 98%;
+            border-radius: 5px;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        #allCommodity{
+            margin-left:10px;
+        }
+        #allCommodity div{
+            float: left;
+            margin-left: 10px;
+            margin-top: 15px;
+        }
+        .commodity{
+            height: 370px;
+            width:250px ;
+            border: 1px solid #AAA;
+        }
+        .commodity img{
+            width: 220px;
+            height: 280px;
+        }
+        .commodity span{
+            font-weight: 700;
+            font-family: '宋体';
+        }
+        .s1{
+            color: black;
+        }
+
+        .s3{
+            color: #AAA;
+        }
+        .commodity p{
+            font-weight: 700;
+            font-family: '宋体';
+            color: #AAA;
+            margin-top: 0;
+            margin-right: -140px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="top_1">
+    <div style="float: left; height: 100%; width: 800px;">
+        <!--action="/courses/search"-->
+        <form class="header_container_search fl cf" id="header_search" method="get"  data-block="GLOBLNAV" data-description="TOSEARCH">
+            <input class="form-control" type="text" name="title">
+            <button type="button" class="btn btn-success" onclick="queryAboutUs()">搜索</button>
+    </div>
+</div>
+
+
+
+<div id="allCommodity">
+    <div class="list_mode_wrap wrap">
+        <ul class="list_style" id="aboutUsData" data-block="RESULT">
+        </ul>
+    </div>
+</div>
+<br>
+<div id="list_pager" class="pager" style="float:left;">
+
+
+    总<span id="sum" style="color:blue"></span>条                 &nbsp;
+    总<span id="size"  style="color:blue"></span>页                 &nbsp;
+    <a href="JavaScript:toPage(1)">首页</a>          &nbsp;
+    <a href="JavaScript:toPage(2)">上一页</a>         &nbsp;
+    <a href="JavaScript:toPage(3)">下一页</a>         &nbsp;
+    <a href="JavaScript:toPage(4)">尾页</a>           &nbsp;
+    每页<input size="1" name="pageCount" id="count" value="2">条                         &nbsp;
+    第<input size="1" name="pageNow"  id="now" value="1">页
+    <input type="button" value="跳转" onclick="queryAboutUs()">
+    </form>
+</div>
+
+
+</body>
+
+<script type="text/javascript" src="news.js"></script>
+
+</html>

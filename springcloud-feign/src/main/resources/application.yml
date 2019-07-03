@@ -5,9 +5,15 @@ server:
 spring:
   application:
     name: springcloud-feign
+  data:
+    elasticsearch:
+      cluster-name:  my-application
+      cluster-nodes: localhost:9300
+
 
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
