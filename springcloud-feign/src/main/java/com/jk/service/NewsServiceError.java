@@ -51,4 +51,9 @@ public class NewsServiceError implements NewsServiceFeign {
     public void deleteNews(Integer id) {
 
     }
+
+    @Override
+    public String hello() {
+        return null;
+    }
 }

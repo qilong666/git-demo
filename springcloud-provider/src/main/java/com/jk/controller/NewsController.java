@@ -61,5 +61,14 @@ public class NewsController implements NewsServiceApi {
         newsService.deleteNews(id);
     }
 
+    @Override
+    @GetMapping("hello")
+    public String hello(){
+        return "我是董事长，爱好赚钱！！！，今年18岁";
+    }
+
+
+
+
 
 }

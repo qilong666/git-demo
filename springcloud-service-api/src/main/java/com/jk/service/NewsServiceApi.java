@@ -35,4 +35,7 @@ public interface NewsServiceApi {
 
     @DeleteMapping("deleteNews/{id}")
     void deleteNews(@PathVariable(value="id") Integer id);
+
+    @GetMapping("hello")
+    String hello();
 }

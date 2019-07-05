@@ -42,6 +42,12 @@ public class NewsController {
       private NewsRepository newsRepository;
 
 
+    @GetMapping("hello")
+    public String hello(){
+        return newsServiceFeign.hello();
+    }
+
+
     @RequestMapping("toList")
     public ModelAndView  toList(ModelAndView mv){
         mv.setViewName("Bootstarp");
