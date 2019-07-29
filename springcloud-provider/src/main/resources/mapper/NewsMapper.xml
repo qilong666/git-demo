@@ -48,12 +48,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </update>
 
     <!--删除-->
-
      <delete id="deleteNews" parameterType="Integer">
          delete  from t_news where newId = #{id}
      </delete>
 
+       <!--新增-->
+      <insert id="add">
+          insert  into
+          ${tableName}
+          (newId,title,content,publishDate,author,typeId,)
+          values
+          (#{news.newId},#{news.title},#{news.content},#{news.publishDate},#{news.author},#{news.typeId})
+      </insert>
 
+      <!--查询分表数据-->
+    <select id="getNewsData" resultType="com.jk.model.NewsBean">
+            SELECT  *  from  ${tableName}
+    </select>
 
 
 </mapper>

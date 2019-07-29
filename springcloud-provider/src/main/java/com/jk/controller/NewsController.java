@@ -40,7 +40,18 @@ public class NewsController implements NewsServiceApi {
     @Override
     @PostMapping("addNewsTable")
     public void addNews(@RequestBody NewsBean news) {
-        newsService.addNews(news);
+       /* newsService.addNews(news);*/
+
+        newsService.addId();
+
+        Integer  keyId = newsService.queryMaxId();
+
+        news.setNewId(keyId);
+
+        String  tableName = "t_news" + keyId % 3;
+
+
+        newsService.add(tableName,news);
     }
 
     @Override
@@ -65,6 +76,12 @@ public class NewsController implements NewsServiceApi {
     @GetMapping("hello")
     public String hello(){
         return "我是董事长，爱好赚钱！！！，今年18岁";
+    }
+
+    @GetMapping("getNewsData")
+    public  List<NewsBean>  getNewsData(@RequestParam(value = "newsid") Integer newsid){
+      List<NewsBean>  newlist = newsService.getNewsData(newsid);
+      return  newlist;
     }
 
 

@@ -70,4 +70,30 @@ public class NewsServiceImpl implements NewsService {
     public void deleteNews(Integer id) {
         newsMapper.deleteNews(id);
     }
+
+    @Override
+    public void addId() {
+
+        newsMapper. addId();
+
+        }
+
+    @Override
+    public Integer queryMaxId() {
+        return newsMapper.queryMaxId();
+    }
+
+    @Override
+    public void add(String tableName, NewsBean news) {
+        newsMapper.add(tableName,news);
+    }
+
+    @Override
+    public List<NewsBean> getNewsData(Integer newsid) {
+
+
+        String tableName = "t_news"+newsid % 3;
+
+        return newsMapper.getNewsData(tableName);
+    }
 }

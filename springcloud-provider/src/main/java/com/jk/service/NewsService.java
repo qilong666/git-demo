@@ -24,4 +24,12 @@ public interface NewsService {
     void updateNews(NewsBean news);
 
     void deleteNews(Integer id);
+
+    void addId();
+
+    Integer queryMaxId();
+
+    void add(String tableName, NewsBean news);
+
+    List<NewsBean> getNewsData(Integer newsid);
 }
